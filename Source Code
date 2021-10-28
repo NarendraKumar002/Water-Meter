@@ -4,8 +4,8 @@
 #include <BlynkSimpleEsp8266.h>
 BlynkTimer timer;
 char auth[] = "zhXv-DxH0209LCWh2H4s30SphNo5wRgc"; //Auth code sent via Email
-char ssid[] = "AndroidAP"; //Wifi name
-char pass[] = "venkatesan";
+char ssid[] = "ENTER THE USER ID"; //Wifi name
+char pass[] = "ENTER THE PASSWORD";
   //Wifi Password
 int flag=0;
 void notifyOnFire()
