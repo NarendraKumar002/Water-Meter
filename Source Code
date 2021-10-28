@@ -1,0 +1,37 @@
+//Blynk Fire Alarm Notification
+#define BLYNK_PRINT Serial
+#include <ESP8266WiFi.h>
+#include <BlynkSimpleEsp8266.h>
+BlynkTimer timer;
+char auth[] = "zhXv-DxH0209LCWh2H4s30SphNo5wRgc"; //Auth code sent via Email
+char ssid[] = "AndroidAP"; //Wifi name
+char pass[] = "venkatesan";
+  //Wifi Password
+int flag=0;
+void notifyOnFire()
+{
+  int isButtonPressed = digitalRead(D1);
+  if (isButtonPressed==1 && flag==0) 
+// if (isButtonPressed==1 ) 
+  {
+    Serial.println("WATER TANK FULL");
+    Blynk.notify("Alert : WATER TANK FULL");
+    flag=0;
+  }
+  else if (isButtonPressed==0)
+  {
+    flag=0;
+  }
+}
+void setup()
+{
+Serial.begin(9600);
+Blynk.begin(auth, ssid, pass);
+pinMode(D1,INPUT_PULLUP);
+timer.setInterval(1000L,notifyOnFire); 
+}
+void loop()
+{
+  Blynk.run();
+  timer.run();
+}
